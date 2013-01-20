@@ -1,7 +1,7 @@
 var qr = {};
 //API URL
 qr.api = 'http://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=';
-// qr.api = 'http://localhost:8080/qrcode/api.php?chl=';
+// qr.api = 'http://localhost/qrcode/api.php?chl=';
 //空白图 URL
 qr.blankimg = 'img/blank.gif';
 //默认数据

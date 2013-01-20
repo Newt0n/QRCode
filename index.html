@@ -28,7 +28,7 @@
 					<textarea id="qrtext" value="<?= $qrdata; ?>" class="finput"></textarea>
 				</fieldset>
 				<p class="muted">在任意页面生成所选内容的二维码</p>
-				<a href="javascript:(function(){f='http://localhost:8080/qrcode/?d='+encodeURIComponent(''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text));a=function(){if(!window.open(f,'QRcode','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=660'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()" class="btn btn-small btn-success" style="cursor:move"><i class="icon-qrcode icon-white"></i> QRCode</a><span class="muted"> ←拖放到书签栏使用</span>
+				<a href="javascript:(function(){f='http://localhost/qrcode/?d='+encodeURIComponent(''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text));a=function(){if(!window.open(f,'QRcode','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=660'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()" class="btn btn-small btn-success" style="cursor:move"><i class="icon-qrcode icon-white"></i> QRCode</a><span class="muted"> ←拖放到书签栏使用</span>
 			</div>
 
 			<div id="vcard" class="tab-pane">
