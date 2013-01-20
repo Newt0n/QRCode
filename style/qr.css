@@ -1,0 +1,6 @@
+.main{width: 680px;margin: auto;padding: 5px 0px  0px 0px;overflow: hidden;}
+#qrsetting{float: left;width: 350px;}
+#qrimage {float: right;width: 300px;}
+#qrimg {background: url('../img/ajax-loader.gif') no-repeat center center;}
+#qrbtn{display: block;margin: auto;width: 150px;height: 30px;line-height: 30px;font-size: 20px;text-align: center;}
+textarea{min-width: 330px;min-height: 130px;}

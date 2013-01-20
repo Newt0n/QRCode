@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>QRCode</title>
+	<link rel="stylesheet" href="style/bootstrap.min.css">
+	<link rel="stylesheet" href="style/qr.css">
+	<script type="text/javascript" src="style/jquery.js"></script>
+</head>
+<body>
+	<div class="main">
+	<?php
+		$qrdata = '';
+		if(isset($_GET['d']))
+			$qrdata = $_GET['d'];
+	?>
+	<div id="qrsetting">
+		<ul id="qrtypebar" class="nav nav-tabs">
+			<li class="active"><a href="#text" data-toggle="tab" qrtype="text">文本/网址</a></li>
+			<li><a href="#vcard" data-toggle="tab" qrtype="vcard">电子名片</a></li>
+			<li><a href="#wifi" data-toggle="tab" qrtype="wifi">WI-FI 网络</a></li>
+		</ul>
+
+		<div id="qrdata" class="tab-content">
+			<div id="text" class="tab-pane active">
+				<fieldset>
+					<p class="muted">生成文本类型的二维码，如果需要输入网址，请以 http:// 或 https:// 开头</p>
+					<textarea id="qrtext" value="<?= $qrdata; ?>" class="finput"></textarea>
+				</fieldset>
+				<p class="muted">在任意页面生成所选内容的二维码</p>
+				<a href="javascript:(function(){f='http://localhost:8080/qrcode/?d='+encodeURIComponent(''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text));a=function(){if(!window.open(f,'QRcode','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=660'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()" class="btn btn-small btn-success" style="cursor:move"><i class="icon-qrcode icon-white"></i> QRCode</a><span class="muted"> ←拖放到书签栏使用</span>
+			</div>
+
+			<div id="vcard" class="tab-pane">
+				<fieldset>
+					<p class="muted">通过扫描生成的二维码，可以马上把联系人添加到手机通讯录里</p>
+					<label for="vcardfname">姓名</label>
+					<input id="vcardfname" type="text" value="" class="span4 finput">
+					<label for="vcardtel">电话</label>
+					<input id="vcardtel" type="text" value="" class="span4">
+					<label for="vcardemail">电子邮箱</label>
+					<input id="vcardemail" type="text" value="" class="span4">
+					<label for="vcardadr">地址</label>
+					<input id="vcardadr" type="text" value="" class="span4">
+					<label for="vcardorg">公司</label>
+					<input id="vcardorg" type="text" value="" class="span4">
+					<label for="vcardtitle">职位</label>
+					<input id="vcardtitle" type="text" value="" class="span4">
+					<label for="vcardurl">个人页面</label>
+					<input id="vcardurl" type="text" value="" class="span4">
+					<label for="vcardmemo">备注</label>
+					<input id="vcardmemo" type="text" value="" class="span4">
+				</fieldset>
+			</div>
+
+			<div id="wifi" class="tab-pane">
+				<fieldset>
+					<p class="muted">适用于 Android，扫描后生成的二维码后，即可进入设置并链接该 WI-FI 网络，方便分享无须手工设置</p>
+					<label for="wifiname">网络名称/SSID</label>
+					<input id="wifiname" type="text" value="" class="span4 finput">
+					<label for="wifipw">网络密码</label>
+					<input id="wifipw" type="password" value="" class="span4">
+					<label for="wifiencrypt">加密类型</label>
+					<select id="wifiencrypt" type="text" value="">
+						<option value="">公开无加密</option>
+						<option value="WEP">WEP</option>
+						<option value="WPA">WPA/WPA2</option>
+					</select>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+
+	<div id="qrimage">
+		<img width="300" height="300" id="qrimg" src="" alt="">
+		<a href="javascript:void(null);" id="qrbtn" class="btn btn-primary" qrtype='load' onclick="getImg();">生成</a>
+	</div>
+	</div>
+
+<script type="text/javascript" src="style/qr.js"></script>
+<script type="text/javascript" src="style/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	getParam();
+	getImg();
+	$('.tab-pane.active').find('.finput').focus();
+
+	$('#qrtypebar a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+
+	})
+
+	$('a[data-toggle="tab"]').on('shown', function (e) {
+		$('#qrbtn').attr('qrtype', $(this).attr('qrtype'));
+		$('.tab-pane.active').find('.finput').focus();
+	})
+
+});
+</script>
+</body>
+</html>
