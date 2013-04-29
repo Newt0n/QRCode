@@ -4,4 +4,6 @@ QRCode
 
 Live Demo
 ======
-https://app-newt0n.rhcloud.com/qr
+http://newton.ap01.aws.af.cm/qr/
+
+https://app-newt0n.rhcloud.com/qr/
